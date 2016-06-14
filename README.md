@@ -46,6 +46,8 @@ For each classifier, we run the algorithm 10 times and take the average as the f
 CNN: 93.30 \pm 0.59   LSTM: 93.14 \pm 0.69    GRU: 92.66 \pm 0.77
 ```
 
+All the printout information will be stored into a log file. 
+
 #### Acknowledgments
 Our implementation utilizes code from the following:
 
