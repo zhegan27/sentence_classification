@@ -76,7 +76,7 @@ def prepare_data(seqs, labels, maxlen=None):
     return x, x_mask, labels
 
 def train_classifier(train, valid, test, W, n_words=10000, n_x=300, n_h=200, 
-    dropout_val=0.5, patience=10, max_epochs=30, lrate=0.0002, 
+    dropout_val=0.5, patience=10, max_epochs=20, lrate=0.0002, 
     batch_size=50, valid_batch_size=50, dispFreq=10, validFreq=100, 
     saveFreq=200, saveto = 'trec_gru_result.npz'):
         

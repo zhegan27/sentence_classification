@@ -1,5 +1,5 @@
 '''
-Build a bidirectional LSTM Classifier Trained on TREC dataset
+Build a bidirectional RNN Classifier with GRU Trained on TREC dataset
 Zhe Gan @zg27@duke.edu, June, 13, 2016
 Duke University, ECE
 '''
@@ -12,8 +12,8 @@ import numpy as np
 import theano
 import theano.tensor as tensor
 
-from model.lstm_classifier import init_params, init_tparams
-from model.lstm_classifier import build_model
+from model.gru_classifier import init_params, init_tparams
+from model.gru_classifier import build_model
 
 from model.optimizers import Adam
 from model.utils import get_minibatches_idx
@@ -76,9 +76,9 @@ def prepare_data(seqs, labels, maxlen=None):
     return x, x_mask, labels
 
 def train_classifier(train, valid, test, W, n_words=10000, n_x=300, n_h=200, 
-    dropout_val=0.5, patience=10, max_epochs=20, lrate=0.0002, 
+    dropout_val=0.5, patience=10, max_epochs=30, lrate=0.0002, 
     batch_size=50, valid_batch_size=50, dispFreq=10, validFreq=100, 
-    saveFreq=200, saveto = 'trec_lstm_result.npz'):
+    saveFreq=200, saveto = 'trec_gru_result.npz'):
         
     """ train, valid, test : datasets
         W : the word embedding initialization
@@ -253,9 +253,9 @@ def create_valid(train_set,valid_portion=0.10):
 if __name__ == '__main__':
     
     # https://docs.python.org/2/howto/logging-cookbook.html
-    logger = logging.getLogger('eval_trec_lstm')
+    logger = logging.getLogger('eval_trec_gru')
     logger.setLevel(logging.INFO)
-    fh = logging.FileHandler('eval_trec_lstm.log')
+    fh = logging.FileHandler('eval_trec_gru.log')
     fh.setLevel(logging.INFO)
     ch = logging.StreamHandler()
     ch.setLevel(logging.INFO)

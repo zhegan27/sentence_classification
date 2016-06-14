@@ -62,7 +62,7 @@ def prepare_data(seqs_x, max_len, n_words, filter_h):
 
 def train_classifier(train, valid, test, W, n_words=10000, img_w=300, max_len=40, 
     feature_maps=100, filter_hs=[3,4,5], dropout_val=0.5, patience=10, 
-    max_epochs=30, lrate=0.0002, batch_size=50, valid_batch_size=50, dispFreq=10, 
+    max_epochs=20, lrate=0.0002, batch_size=50, valid_batch_size=50, dispFreq=10, 
     validFreq=100, saveFreq=200, saveto = 'trec_cnn_result.npz'):
         
     """ train, valid, test : datasets
