@@ -1,4 +1,4 @@
-# sentence_classification
+# Sentence Classification
 
 Implementation of sentence classification using CNN, and RNN with LSTM/GRU units.
 
