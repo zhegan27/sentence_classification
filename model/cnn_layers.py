@@ -5,7 +5,7 @@ import theano.tensor as tensor
 import theano.tensor.shared_randomstreams
 from utils import _p
 from theano.tensor.nnet import conv
-from theano.tensor.signal import downsample
+from theano.tensor.signal import pool
 
 rng = np.random.RandomState(3435)
 
@@ -43,6 +43,6 @@ def encoder(tparams, layer0_input, filter_shape, pool_size,
                             filter_shape=filter_shape)
     
     conv_out_tanh = tensor.tanh(conv_out + tparams[_p(prefix,'b')].dimshuffle('x', 0, 'x', 'x'))
-    output = downsample.max_pool_2d(input=conv_out_tanh, ds=pool_size, ignore_border=True)
+    output = pool.pool_2d(input=conv_out_tanh, ds=pool_size, ignore_border=True)
 
     return output.flatten(2)
